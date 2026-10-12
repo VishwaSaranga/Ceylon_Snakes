@@ -6,17 +6,11 @@ import 'package:ceylon_snakes/screens/main_screen.dart';
 import 'package:ceylon_snakes/providers/theme_provider.dart';
 import 'package:ceylon_snakes/providers/snake_provider.dart';
 import 'package:ceylon_snakes/services/database_service.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  try {
-    await dotenv.load(fileName: ".env");
-  } catch (e) {
-    debugPrint("Failed to load .env file: $e");
-  }
-
+  // Initialize Database
   await DatabaseService.instance.initDB();
 
   runApp(
